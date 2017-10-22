@@ -1,6 +1,6 @@
 # Based on flow-bin
 # USAGE:
-#   makepkg -Ccsi
+#   makepkg -csi
 
 pkgname=flow-bin
 pkgver=v0.57.3

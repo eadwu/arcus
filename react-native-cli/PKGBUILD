@@ -1,6 +1,6 @@
 # Based on react-native-cli and nodejs-jshint
 # USAGE:
-#   makepkg -Ccsi
+#   makepkg -csi
 
 pkgname=react-native-cli
 pkgver=2.0.1
