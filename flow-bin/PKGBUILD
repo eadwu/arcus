@@ -22,7 +22,7 @@ source=(
 	"https://raw.githubusercontent.com/facebook/flow/$(pkgver)/LICENSE"
 )
 sha512sums=(
-	'4fbbf66527e5a4c59ec2f0529ebd4850e104ea5095a0f65ac2eadb0bb104afda9b3a8e80cc48765e9a34a3f830270da82fd86fa3b054dfc3c8abcf9c2a66d0e9'
+	'SKIP'
 	'400e5fff25247fb0fa8c0125073658c8f429c39fc20efefe9a8a69b5c5f925a9df1818b324e6691884ba108463908b75758f07b4796bf9fb972401696d3371f4'
 )
 

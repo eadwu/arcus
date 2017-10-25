@@ -22,7 +22,7 @@ source=(
 )
 noextract=("${pkgname}-$(pkgver).tgz")
 sha512sums=(
-  '420901d6ead48467bdab5bdca902c87cd74277f41fdcc74d41ed7d40eea556384854a96395530ab5a2bc45a67c3c2341fdc75794efc6ded2941a4fa084c5c4eb'
+  'SKIP'
   '71206f59e5d0b29d7023d3d014b4b61e567ad543cfb8a5a3a202a271c209b04a066b7c8ae43acc84e73f1cbd897bd73a45b7eba282dbe4f6843f5bc42ce07bf3'
 )
 
