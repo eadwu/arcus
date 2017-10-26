@@ -3,9 +3,9 @@
 #   makepkg -csi
 
 pkgname=flow-bin
-pkgver=v0.57.3
+pkgver=0.50.0
 
-pkgver() {
+current_pkgver() {
 	printf "%s" $(curl -Ss https://github.com/facebook/flow/releases | grep -Po 'v[0-9]+\.[0-9]+\.[0-9]+' | head -n 1)
 }
 
@@ -18,8 +18,8 @@ provides=('flow')
 conflicts=('flow')
 replaces=('flow')
 source=(
-	"flow-linux64-$(pkgver).zip::https://github.com/facebook/flow/releases/download/$(pkgver)/flow-linux64-$(pkgver).zip"
-	"https://raw.githubusercontent.com/facebook/flow/$(pkgver)/LICENSE"
+	"flow-linux64-$(current_pkgver).zip::https://github.com/facebook/flow/releases/download/$(current_pkgver)/flow-linux64-$(current_pkgver).zip"
+	"https://raw.githubusercontent.com/facebook/flow/$(current_pkgver)/LICENSE"
 )
 sha512sums=(
 	'SKIP'
