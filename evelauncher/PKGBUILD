@@ -6,7 +6,7 @@ pkgname=evelauncher
 pkgver=1222103
 
 current_pkgver() {
-  printf "%s" $(curl -Ss https://community.eveonline.com/support/download/ | grep -Po '[0-9]+(?=\.exe)')
+  printf "%s" $(curl -Ss http://binaries.eveonline.com/evelauncher_linux_release.json | grep -Po '[0-9]+')
 }
 
 pkgrel=1
