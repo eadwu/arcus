@@ -31,7 +31,7 @@ source=(
 )
 md5sums=(
   'SKIP'
-  '1f397c30ef4d5c8835c34443c04aabba'
+  '67636c3e98c7af984d9f034c27a64b4d'
   '74491257d2faa64d006de04e5ea4bcc8'
 )
 
@@ -54,8 +54,8 @@ package() {
   install -d "${pkgdir}/usr/share/applications"
   install "${srcdir}/evelauncher.desktop" "${pkgdir}/usr/share/applications"
 
-  install -d "${pkgdir}/opt/${pkgname}"
-  install "${srcdir}/EveOnline.png" "${pkgdir}/opt/${pkgname}"
+  install -d "${pkgdir}/usr/share/pixmaps"
+  install "${srcdir}/EveOnline.png" "${pkgdir}/usr/share/pixmaps"
 
   # Main binary
  	install -d "${pkgdir}/usr/bin"

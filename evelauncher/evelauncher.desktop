@@ -3,5 +3,5 @@ Type=Application
 Name=EVE Online Launcher
 GenericName=EVE Online
 Exec=/opt/evelauncher/evelauncher
-Icon=/opt/evelauncher/EveOnline.png
+Icon=EveOnline
 Categories=Game
