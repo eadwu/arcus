@@ -14,9 +14,6 @@ pkgdesc='Adds static typing to JavaScript to improve developer productivity and 
 arch=('x86_64')
 url='http://flowtype.org/'
 license=('MIT')
-provides=('flow')
-conflicts=('flow')
-replaces=('flow')
 source=(
 	"flow-linux64-$(current_pkgver).zip::https://github.com/facebook/flow/releases/download/$(current_pkgver)/flow-linux64-$(current_pkgver).zip"
 	"https://raw.githubusercontent.com/facebook/flow/$(current_pkgver)/LICENSE"
