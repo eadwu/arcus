@@ -1,0 +1,63 @@
+# Based on evelauncher
+# USAGE:
+#   makepkg -csi
+
+pkgname=evelauncher
+pkgver=1222103
+
+current_pkgver() {
+  printf "%s" $(curl -Ss https://community.eveonline.com/support/download/ | grep -Po '[0-9]+(?=\.exe)')
+}
+
+pkgrel=1
+pkgdesc='Unofficial Eve Online Launcher'
+arch=('any')
+url='https://forums.eveonline.com/t/eve-launcher-for-linux/7286'
+license=('custom')
+depends=(
+  'qt5-base'
+  'qt5-translations'
+  'qt5-webengine'
+  'qt5-webkit'
+  'qt5-webview'
+  'qt5-websockets'
+  'openssl'
+  'lib32-libldap'
+)
+source=(
+  "https://binaries.eveonline.com/evelauncher-$(current_pkgver).tar.gz"
+	"evelauncher.desktop"
+	"EveOnline.png"
+)
+md5sums=(
+  'SKIP'
+  '1f397c30ef4d5c8835c34443c04aabba'
+  '74491257d2faa64d006de04e5ea4bcc8'
+)
+
+package() {
+  # Install the main files.
+  install -d "${pkgdir}/opt/${pkgname}"
+  rm ${srcdir}/evelauncher/libQt5* ${srcdir}/evelauncher/QtWebEngineProcess
+  rm -r "${srcdir}/evelauncher/plugins/"
+  rm -r "${srcdir}/evelauncher/resources/"
+  cp -a "${srcdir}/evelauncher/." "${pkgdir}/opt/${pkgname}"
+  ln -s "/usr/lib/qt/libexec/QtWebEngineProcess" "${pkgdir}/opt/${pkgname}"
+  ln -s "/usr/lib/qt/plugins/" "${pkgdir}/opt/${pkgname}"
+  ln -s "/usr/share/qt/resources/" "${pkgdir}/opt/${pkgname}"
+  ln -s "/usr/share/qt/translations/" "${pkgdir}/opt/${pkgname}"
+
+  # Exec bit
+  chmod 755 "${pkgdir}/opt/${pkgname}/evelauncher"
+
+  # Desktop Entry
+  install -d "${pkgdir}/usr/share/applications"
+  install "${srcdir}/evelauncher.desktop" "${pkgdir}/usr/share/applications"
+
+  install -d "${pkgdir}/opt/${pkgname}"
+  install "${srcdir}/EveOnline.png" "${pkgdir}/opt/${pkgname}"
+
+  # Main binary
+ 	install -d "${pkgdir}/usr/bin"
+  ln -s "/opt/${pkgname}/evelauncher" "${pkgdir}/usr/bin/${pkgname}"
+}
