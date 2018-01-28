@@ -23,6 +23,9 @@ depends=(
   'qt5-websockets'
   'openssl'
   'lib32-libldap'
+  'samba'
+  'libwbclient'
+  'lib32-mpg123'
 )
 source=(
   "https://binaries.eveonline.com/evelauncher-$(current_pkgver).tar.gz"
