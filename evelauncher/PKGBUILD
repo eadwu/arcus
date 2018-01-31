@@ -28,8 +28,8 @@ depends=(
   'lib32-mpg123'
   # Verify [lib32-]freetype2 version
   # https://forums.eveonline.com/t/arch-linux-executable-closes-immediately-upon-opening/29684/23
-  'freetype2<2.8.0'
-  'lib32-freetype2<2.8.0'
+  # 'freetype2<2.8.0'
+  # 'lib32-freetype2<2.8.0'
 )
 source=(
   "https://binaries.eveonline.com/evelauncher-$(current_pkgver).tar.gz"
