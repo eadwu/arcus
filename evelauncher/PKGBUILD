@@ -15,17 +15,20 @@ arch=('any')
 url='https://forums.eveonline.com/t/eve-launcher-for-linux/7286'
 license=('custom')
 depends=(
+  'alsa-lib'
+  'libpulse'
+  'lib32-libldap'
+  'lib32-openssl'
+  'lib32-mpg123'
+  'libwbclient'
+  'openssl'
   'qt5-base'
   'qt5-translations'
   'qt5-webengine'
   'qt5-webkit'
   'qt5-webview'
   'qt5-websockets'
-  'openssl'
-  'lib32-libldap'
   'samba'
-  'libwbclient'
-  'lib32-mpg123'
 )
 source=(
   "https://binaries.eveonline.com/evelauncher-$(current_pkgver).tar.gz"
