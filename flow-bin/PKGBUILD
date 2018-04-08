@@ -3,7 +3,7 @@
 #   makepkg -csi
 
 pkgname=flow-bin
-pkgver=0.50.0
+pkgver=0.69.0
 
 current_pkgver() {
 	printf "%s" $(curl -Ss https://github.com/facebook/flow/releases | grep -Po 'v[0-9]+\.[0-9]+\.[0-9]+' | head -n 1)

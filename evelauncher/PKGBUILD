@@ -3,7 +3,7 @@
 #   makepkg -csi
 
 pkgname=evelauncher
-pkgver=1222103
+pkgver=1225328
 
 current_pkgver() {
   printf "%s" $(curl -Ss http://binaries.eveonline.com/evelauncher_linux_release.json | grep -Po '[0-9]+')
