@@ -3,5 +3,8 @@
 !.gitignore
 !.vscode/*
 !**/PKGBUILD
+!**/.SRCINFO
 !**/*.desktop
 !**/*.png
+
+!x86_64/*.pkg.tar.xz
