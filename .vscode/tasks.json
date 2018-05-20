@@ -9,6 +9,14 @@
       "command": "git ls-files --ignored --others --exclude-standard | xargs -d '\\n' rm"
     },
     {
+      "label": "pkgbuilds: build",
+      "type": "shell",
+      "command": "makepkg -cs && mv *.xz ${workspaceFolder}/x86_64",
+      "options": {
+        "cwd": "${fileDirname}"
+      }
+    },
+    {
       "label": "pkgbuilds: generate",
       "type": "shell",
       "command": "makepkg --printsrcinfo > .SRCINFO",
