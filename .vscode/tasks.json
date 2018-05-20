@@ -20,6 +20,14 @@
       "label": "pkgbuilds: test",
       "type": "shell",
       "command": "namcap '${file}'"
+    },
+    {
+      "label": "pkgbuilds: updpkgsums",
+      "type": "shell",
+      "command": "updpkgsums",
+      "options": {
+        "cwd": "${fileDirname}"
+      }
     }
   ]
 }
