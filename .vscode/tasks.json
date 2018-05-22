@@ -6,7 +6,7 @@
     {
       "label": "pkgbuilds: clean",
       "type": "shell",
-      "command": "git ls-files --ignored --others --exclude-standard | xargs -d '\\n' rm"
+      "command": "git ls-files --ignored --others --exclude-standard | xargs -d '\\n' rm -f"
     },
     {
       "label": "pkgbuilds: build",
