@@ -1,0 +1,30 @@
+pkgbase = evelauncher
+	pkgdesc = Unofficial Eve Online Launcher
+	pkgver = 1225328
+	pkgrel = 1
+	url = https://forums.eveonline.com/t/eve-launcher-for-linux/7286
+	arch = any
+	license = custom
+	depends = alsa-lib
+	depends = libpulse
+	depends = lib32-libldap
+	depends = lib32-openssl
+	depends = lib32-mpg123
+	depends = libwbclient
+	depends = openssl
+	depends = qt5-base
+	depends = qt5-translations
+	depends = qt5-webengine
+	depends = qt5-webkit
+	depends = qt5-webview
+	depends = qt5-websockets
+	depends = samba
+	source = https://binaries.eveonline.com/evelauncher-1225328.tar.gz
+	source = evelauncher.desktop
+	source = EveOnline.png
+	sha256sums = SKIP
+	sha256sums = 35906fcc1041b3adff227d2f1fd8624599decc24012dbc8a9725a66ca2f3a767
+	sha256sums = a87784e5b5f11d2cb5b881c31d4309165a96bbce7ec1a8ca088e07748203e259
+
+pkgname = evelauncher
+
