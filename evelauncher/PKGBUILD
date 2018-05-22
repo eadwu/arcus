@@ -35,11 +35,9 @@ source=(
 	"evelauncher.desktop"
 	"EveOnline.png"
 )
-md5sums=(
-  'SKIP'
-  '67636c3e98c7af984d9f034c27a64b4d'
-  '74491257d2faa64d006de04e5ea4bcc8'
-)
+sha256sums=('SKIP'
+            '35906fcc1041b3adff227d2f1fd8624599decc24012dbc8a9725a66ca2f3a767'
+            'a87784e5b5f11d2cb5b881c31d4309165a96bbce7ec1a8ca088e07748203e259')
 
 package () {
   # Install the main files.
