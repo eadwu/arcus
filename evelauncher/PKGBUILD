@@ -13,26 +13,24 @@ pkgdesc='Unofficial Eve Online Launcher'
 arch=('any')
 url='https://forums.eveonline.com/t/eve-launcher-for-linux/7286'
 license=('custom')
-depends=(
-  'alsa-lib'
-  'libpulse'
-  'lib32-libldap'
-  'lib32-openssl'
-  'lib32-mpg123'
-  'libwbclient'
-  'openssl'
-  'qt5-base'
-  'qt5-translations'
-  'qt5-webengine'
-  'qt5-webkit'
-  'qt5-webview'
-  'qt5-websockets'
-  'samba'
+depends=('alsa-lib'
+         'libpulse'
+         'lib32-libldap'
+         'lib32-openssl'
+         'lib32-mpg123'
+         'libwbclient'
+         'openssl'
+         'qt5-base'
+         'qt5-translations'
+         'qt5-webengine'
+         'qt5-webkit'
+         'qt5-webview'
+         'qt5-websockets'
+         'samba'
 )
-source=(
-  "https://binaries.eveonline.com/evelauncher-$(pkgver).tar.gz"
-	"evelauncher.desktop"
-	"EveOnline.png"
+source=("https://binaries.eveonline.com/evelauncher-$(pkgver).tar.gz"
+        'evelauncher.desktop'
+        'EveOnline.png'
 )
 sha256sums=('SKIP'
             '35906fcc1041b3adff227d2f1fd8624599decc24012dbc8a9725a66ca2f3a767'

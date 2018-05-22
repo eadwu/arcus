@@ -2,10 +2,10 @@
 # Maintainer: Edmund Wu <fangkazuto@gmail.com>
 
 pkgname=flow-bin
-pkgver=v0.72.0
+pkgver=0.72.0
 
 pkgver () {
-  printf "%s" $(curl -Ss https://github.com/facebook/flow/releases | grep -Po 'v[0-9]+\.[0-9]+\.[0-9]+' | head -n 1)
+  printf "%s" $(curl -Ss https://github.com/facebook/flow/releases | grep -Po '(?<=v)[0-9]+\.[0-9]+\.[0-9]+' | head -n 1)
 }
 
 pkgrel=1
@@ -13,13 +13,11 @@ pkgdesc='Adds static typing to JavaScript to improve developer productivity and 
 arch=('x86_64')
 url='http://flowtype.org/'
 license=('MIT')
-source=(
-  "flow-linux64-$(pkgver).zip::https://github.com/facebook/flow/releases/download/$(pkgver)/flow-linux64-$(pkgver).zip"
-  "https://raw.githubusercontent.com/facebook/flow/$(pkgver)/LICENSE"
+source=("flow-linux64-v$(pkgver).zip::https://github.com/facebook/flow/releases/download/v$(pkgver)/flow-linux64-v$(pkgver).zip"
+        "https://raw.githubusercontent.com/facebook/flow/v$(pkgver)/LICENSE"
 )
-sha512sums=(
-  'SKIP'
-  '400e5fff25247fb0fa8c0125073658c8f429c39fc20efefe9a8a69b5c5f925a9df1818b324e6691884ba108463908b75758f07b4796bf9fb972401696d3371f4'
+sha512sums=('SKIP'
+            '400e5fff25247fb0fa8c0125073658c8f429c39fc20efefe9a8a69b5c5f925a9df1818b324e6691884ba108463908b75758f07b4796bf9fb972401696d3371f4'
 )
 
 package () {
