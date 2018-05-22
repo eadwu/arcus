@@ -1,12 +1,12 @@
 [submodule "kroot-meta"]
 	path = kroot-meta
-	url = ssh://aur@aur.archlinux.org/kroot-meta.git
+	url = https://aur.archlinux.org/kroot-meta.git
 [submodule "kenv-meta"]
 	path = kenv-meta
-	url = ssh://aur@aur.archlinux.org/kenv-meta.git
+	url = https://aur.archlinux.org/kenv-meta.git
 [submodule "kcore-meta"]
 	path = kcore-meta
-	url = ssh://aur@aur.archlinux.org/kcore-meta.git
+	url = https://aur.archlinux.org/kcore-meta.git
 [submodule "kother-meta"]
 	path = kother-meta
-	url = ssh://aur@aur.archlinux.org/kother-meta.git
+	url = https://aur.archlinux.org/kother-meta.git
