@@ -5,7 +5,7 @@
 pkgname=evelauncher
 pkgver=1225328
 
-current_pkgver() {
+pkgver () {
   printf "%s" $(curl -Ss http://binaries.eveonline.com/evelauncher_linux_release.json | grep -Po '[0-9]+')
 }
 
@@ -31,7 +31,7 @@ depends=(
   'samba'
 )
 source=(
-  "https://binaries.eveonline.com/evelauncher-$(current_pkgver).tar.gz"
+  "https://binaries.eveonline.com/evelauncher-$(pkgver).tar.gz"
 	"evelauncher.desktop"
 	"EveOnline.png"
 )
@@ -41,7 +41,7 @@ md5sums=(
   '74491257d2faa64d006de04e5ea4bcc8'
 )
 
-package() {
+package () {
   # Install the main files.
   install -d "${pkgdir}/opt/${pkgname}"
   rm ${srcdir}/evelauncher/libQt5* ${srcdir}/evelauncher/QtWebEngineProcess

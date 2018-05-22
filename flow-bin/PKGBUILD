@@ -3,10 +3,10 @@
 #   makepkg -csi
 
 pkgname=flow-bin
-pkgver=0.69.0
+pkgver=v0.72.0
 
-current_pkgver() {
-	printf "%s" $(curl -Ss https://github.com/facebook/flow/releases | grep -Po 'v[0-9]+\.[0-9]+\.[0-9]+' | head -n 1)
+pkgver () {
+  printf "%s" $(curl -Ss https://github.com/facebook/flow/releases | grep -Po 'v[0-9]+\.[0-9]+\.[0-9]+' | head -n 1)
 }
 
 pkgrel=1
@@ -15,15 +15,15 @@ arch=('x86_64')
 url='http://flowtype.org/'
 license=('MIT')
 source=(
-	"flow-linux64-$(current_pkgver).zip::https://github.com/facebook/flow/releases/download/$(current_pkgver)/flow-linux64-$(current_pkgver).zip"
-	"https://raw.githubusercontent.com/facebook/flow/$(current_pkgver)/LICENSE"
+  "flow-linux64-$(pkgver).zip::https://github.com/facebook/flow/releases/download/$(pkgver)/flow-linux64-$(pkgver).zip"
+  "https://raw.githubusercontent.com/facebook/flow/$(pkgver)/LICENSE"
 )
 sha512sums=(
-	'SKIP'
-	'400e5fff25247fb0fa8c0125073658c8f429c39fc20efefe9a8a69b5c5f925a9df1818b324e6691884ba108463908b75758f07b4796bf9fb972401696d3371f4'
+  'SKIP'
+  '400e5fff25247fb0fa8c0125073658c8f429c39fc20efefe9a8a69b5c5f925a9df1818b324e6691884ba108463908b75758f07b4796bf9fb972401696d3371f4'
 )
 
-package() {
-	install -Dm0755 flow/flow "${pkgdir}/usr/bin/flow"
-	install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/flow/LICENSE"
+package () {
+  install -Dm0755 flow/flow "${pkgdir}/usr/bin/flow"
+  install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/flow/LICENSE"
 }
