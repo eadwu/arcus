@@ -1,6 +1,5 @@
 # Based on flow-bin
-# USAGE:
-#   makepkg -csi
+# Maintainer: Edmund Wu <fangkazuto@gmail.com>
 
 pkgname=flow-bin
 pkgver=v0.72.0
