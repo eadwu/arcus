@@ -1,0 +1,22 @@
+pkgbase = stack
+	pkgdesc = Stack is a cross-platform program for developing Haskell projects.
+	pkgver = 1.7.1
+	pkgrel = 1
+	url = https://docs.haskellstack.org/en/stable/README/
+	arch = x86_64
+	license = custom
+	depends = ncurses
+	depends = git
+	depends = gnupg
+	depends = xz
+	depends = zlib
+	depends = gmp
+	depends = libffi
+	depends = zlib
+	source = https://raw.githubusercontent.com/commercialhaskell/stack/master/LICENSE
+	source = linux-x86_64.tar.gz::https://get.haskellstack.org/stable/linux-x86_64.tar.gz
+	sha256sums = e2e55abe49de0b44300031564b1d25f72337bec62851d8becd85b0206ec3d008
+	sha256sums = SKIP
+
+pkgname = stack
+

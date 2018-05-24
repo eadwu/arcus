@@ -1,0 +1,32 @@
+# Maintainer: Edmund Wu <fangkazuto@gmail.com>
+
+pkgname=stack
+pkgver=1.7.1
+
+pkgver () {
+  printf "%s" $(curl -Ss https://github.com/commercialhaskell/stack/releases | grep -Po '(?<=v)[0-9]+\.[0-9]+\.[0-9]+' | head -n 1)
+}
+
+pkgrel=1
+pkgdesc='Stack is a cross-platform program for developing Haskell projects.'
+arch=('x86_64')
+url='https://docs.haskellstack.org/en/stable/README/'
+license=('custom')
+depends=('ncurses'
+         'git'
+         'gnupg'
+         'xz'
+         'zlib'
+         'gmp'
+         'libffi'
+         'zlib'
+)
+source=('https://raw.githubusercontent.com/commercialhaskell/stack/master/LICENSE'
+        "linux-${CARCH}.tar.gz::https://get.haskellstack.org/stable/linux-${CARCH}.tar.gz")
+sha256sums=('e2e55abe49de0b44300031564b1d25f72337bec62851d8becd85b0206ec3d008'
+            'SKIP')
+
+package () {
+  install -Dm 0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm 0755 "${srcdir}/stack-${pkgver}-linux-${CARCH}/stack" "${pkgdir}/usr/local/bin/stack"
+}
