@@ -1,0 +1,13 @@
+pkgbase = kroot-meta
+	pkgdesc = Complete base installation
+	pkgver = 0.1.0
+	pkgrel = 2
+	url = https://gitlab.com/eadwu/pkgbuilds
+	arch = x86_64
+	license = custom:unknown
+	depends = kcore-meta
+	depends = kenv-meta
+	depends = kother-meta
+
+pkgname = kroot-meta
+
