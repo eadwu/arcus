@@ -2,7 +2,7 @@
 # Maintainer: Edmund Wu <fangkazuto@gmail.com>
 
 pkgname=flow-bin
-pkgver=0.72.0
+pkgver=0.73.0
 
 pkgver () {
   printf "%s" $(curl -Ss https://github.com/facebook/flow/releases | grep -Po '(?<=v)[0-9]+\.[0-9]+\.[0-9]+' | head -n 1)
