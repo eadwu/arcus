@@ -1,0 +1,45 @@
+---
+  image: base/archlinux:latest
+
+  build-repo:
+    stage: build
+    artifacts:
+      expire_in: 1d
+      paths:
+        - repo
+    before_script:
+      - pacman -Syy
+      - pacman -Syu --noconfirm
+      - pacman -S git base-devel --noconfirm
+      - curl -sS "https://gitlab.com/arch-dual-boot/arch-x-os/raw/master/scripts/pacman.conf.patch" | patch -p1 /etc/pacman.conf
+      - pacman -Syy
+      - pacman -Syu --noconfirm
+      - chgrp nobody / ${CI_PROJECT_DIR}
+      - chmod g+ws / ${CI_PROJECT_DIR}
+      - setfacl -m u::rwx,g::rwx / ${CI_PROJECT_DIR}
+      - setfacl -d --set u::rwx,g::rwx,o::- / ${CI_PROJECT_DIR}
+      - "echo 'nobody ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers"
+    script:
+      - for d in *; do [ -f "${d}/PKGBUILD" ] && (cd $(readlink -f "${d}") && sudo -u nobody makepkg -cs --noconfirm); done
+      - mkdir repo
+      - mkdir repo/x86_64
+      - find . -type f -not \( -path repo -prune \) -name "*.pkg.tar.xz" -exec mv "{}" repo/x86_64 \;
+      - repo-add repo/x86_64/arcus.db.tar.gz repo/x86_64/*.pkg.tar.xz
+
+  pages:
+    stage: deploy
+    dependencies:
+      - build-repo
+    only:
+      - master
+    artifacts:
+      paths:
+        - public
+    script:
+      - mkdir .public
+      - cp -r repo .public
+      - mv .public public
+
+  stages:
+    - build
+    - deploy
