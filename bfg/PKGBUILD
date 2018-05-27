@@ -1,0 +1,27 @@
+# Based on bfg
+# Maintainer: Edmund Wu <fangkazuto@gmail.com>
+
+pkgname=bfg
+pkgver=1.13.0
+
+pkgver () {
+  printf "%s" $(curl -Ss https://github.com/rtyley/bfg-repo-cleaner/releases | grep -Po '(?<=v)[0-9]+\.[0-9]+\.[0-9]+' | head -n 1)
+}
+
+pkgrel=1
+pkgdesc='Removes large or troublesome blobs like git-filter-branch does, but faster'
+arch=('x86_64')
+url='https://rtyley.github.io/bfg-repo-cleaner/'
+license=('GPL3')
+depends=('bash'
+         'java-environment')
+source=("${pkgname}-$(pkgver).jar::http://repo1.maven.org/maven2/com/madgag/${pkgname}/$(pkgver)/${pkgname}-$(pkgver).jar"
+        "${pkgname}.sh"
+)
+sha512sums=('SKIP'
+            '79e89b3fe700399dc77651dc9c75605ffcd2189cebdb2bc7b8c7ff9ba4a2639d6897063af92701e76fbd951717aa900f3e3db9846e967b1c7bb00122ab04e073')
+
+package () {
+  install -Dm0755 "${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm0644 "${pkgname}-${pkgver}.jar" "${pkgdir}/usr/share/java/${pkgname}/${pkgname}.jar"
+}
