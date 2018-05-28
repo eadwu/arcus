@@ -44,8 +44,7 @@ and then run `[sudo] pacman -Syy` to refresh the package lists with `[sudo] pacm
 
   <p>
     <a>
-      <img src="https://img.shields.io/badge/License-UNLICENSED-5E81AC.svg" />
+      <img src="https://img.shields.io/badge/License-BSD--3--Clause-5E81AC.svg" />
     </a>
   </p>
 </div>
-
