@@ -4,5 +4,3 @@
 !.vscode/*
 !**/PKGBUILD
 !**/.SRCINFO
-
-!x86_64/*.pkg.tar.xz
