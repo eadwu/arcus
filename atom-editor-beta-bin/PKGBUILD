@@ -1,0 +1,49 @@
+# Based on atom-editor-beta-bin
+# Maintainer: Edmund Wu <fangkazuto@gmail.com>
+
+pkgname=atom-editor-beta-bin
+pkgver=1.28.0.beta1
+
+pkgver() {
+  curl -sS https://github.com/atom/atom/releases.atom | grep -Eo 'v.*?beta([0-9]+)' | head -n 1 | sed -e 's/-/./' -e 's/v//'
+}
+
+get_version() {
+  printf "%s" $(pkgver) | sed -e 's/\(.*\)\.beta/v\1-beta/'
+}
+
+pkgrel=1
+pkgdesc="Chrome-based text editor from Github - Beta Channel - Precompiled binary from official repository - PKGBUILD downloads the latest dev release when built."
+arch=('x86_64')
+url="https://github.com/atom/atom"
+license=('MIT')
+depends=('alsa-lib'
+         'desktop-file-utils'
+         'gconf'
+         'git'
+         'gtk2'
+         'libgnome-keyring'
+         'libnotify'
+         'libxtst'
+         'nss'
+         'python2'
+         'xdg-utils')
+optdepends=('gvfs')
+conflicts=('atom-editor-beta')
+options=(!strip)
+install=$pkgname.install
+source=("atom-amd64-$(get_version).deb::https://atom-installer.github.com/$(get_version)/atom-amd64.deb"
+         atom-python.patch
+         startupwmclass.patch)
+sha512sums=('SKIP'
+            'ae0a22c6d2edd1345903566c3ef4607ab73aa370329c117e677b252ae2f597033590701a3a52109ab4c90b1c7fc0c015dc4bc12a49a759cab225ac896a260e2e'
+            'c19e7dd0a084ccb32324679be043e3d3003f5faeb9ff24814a348fb52c49d225f262ece79e8ba62308ee788f9d384851ae1c378f1e3edcfdf75457e4f5fc86da')
+
+package() {
+  tar xf data.tar.xz
+  patch -p1 < "${srcdir}"/atom-python.patch
+  patch -p1 < "${srcdir}"/startupwmclass.patch
+  sed -i 's|env PYTHON=python2 GTK_IM_MODULE= QT_IM_MODULE= XMODIFIERS= /usr/share/atom-beta/atom|/usr/bin/atom-beta|' usr/share/applications/atom-beta.desktop
+  chmod -R g-w usr
+  mv usr "${pkgdir}"
+}

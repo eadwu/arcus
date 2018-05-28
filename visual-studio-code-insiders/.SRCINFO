@@ -1,0 +1,28 @@
+pkgbase = visual-studio-code-insiders
+	pkgdesc = Editor for building and debugging modern web and cloud applications (insiders version)
+	pkgver = 1.24.0.1527484372
+	pkgrel = 1
+	url = https://code.visualstudio.com/
+	arch = x86_64
+	license = custom: commercial
+	depends = alsa-lib
+	depends = cairo
+	depends = fontconfig
+	depends = gcc-libs
+	depends = gconf
+	depends = gtk2
+	depends = gvfs
+	depends = libnotify
+	depends = libxss
+	depends = libxtst
+	depends = nss
+	depends = python
+	provides = vscode
+	provides = visualstudiocode
+	source = code_x64_1.24.0.1527484372.tar.gz::https://vscode-update.azurewebsites.net/latest/linux-x64/insider
+	source = visual-studio-code-insiders.desktop
+	sha512sums = SKIP
+	sha512sums = dda2651cc744729a2dbcde1239a3ff3212b0db86fa130fb45428bd8903febca0208d07d3c55d9950cd2b8681c7b67f8bfdea913e82d923370a532491e3c5a44f
+
+pkgname = visual-studio-code-insiders
+

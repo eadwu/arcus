@@ -1,0 +1,49 @@
+# Based on visual-studio-code-insiders
+# Maintainer: Edmund Wu <fangkazuto@gmail.com>
+
+pkgname=visual-studio-code-insiders
+pkgver=1.24.0.1527484372
+pkgrel=1
+pkgdesc="Editor for building and debugging modern web and cloud applications (insiders version)"
+arch=('x86_64')
+url="https://code.visualstudio.com/"
+license=('custom: commercial')
+depends=('alsa-lib'
+         'cairo'
+         'fontconfig'
+         'gcc-libs'
+         'gconf'
+         'gtk2'
+         'gvfs'
+         'libnotify'
+         'libxss'
+         'libxtst'
+         'nss'
+         'python')
+provides=('vscode'
+          'visualstudiocode')
+source=(code_x64_${pkgver}.tar.gz::https://vscode-update.azurewebsites.net/latest/linux-x64/insider
+       ${pkgname}.desktop)
+sha512sums=('SKIP'
+            'dda2651cc744729a2dbcde1239a3ff3212b0db86fa130fb45428bd8903febca0208d07d3c55d9950cd2b8681c7b67f8bfdea913e82d923370a532491e3c5a44f')
+
+pkgver() {
+  IFS='/' read -ra ADDR <<< $(curl -ILs -o /dev/null -w %{url_effective} https://vscode-update.azurewebsites.net/latest/linux-x64/insider); echo "${ADDR[5]}" | sed 's/code-insider-//g' | sed 's/_amd64.tar.gz//g' | sed 's/-/./g'
+}
+
+package() {
+  _pkg=VSCode-linux-x64
+
+  install -d "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d "${pkgdir}/opt/${pkgname}"
+  install -d "${pkgdir}/usr/bin"
+  install -d "${pkgdir}/usr/share/applications"
+  install -d "${pkgdir}/usr/share/icons"
+
+  install -m644 "${srcdir}/${_pkg}/resources/app/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -m644 "${srcdir}/${_pkg}/resources/app/resources/linux/code.png" "${pkgdir}/usr/share/icons/${pkgname}.png"
+  install -m644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+
+  cp -r "${srcdir}/${_pkg}/"* "${pkgdir}/opt/${pkgname}" -R
+  ln -s /opt/${pkgname}/bin/code-insiders "${pkgdir}"/usr/bin/code-insiders
+}
