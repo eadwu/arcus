@@ -26,10 +26,9 @@ depends=('acpi'
          'xorg-xprop'
          'xorg-xsetroot'
          'xorg-xwininfo'
-         'yaourt'
-)
+         'yaourt')
 source=('30-touchpad.conf')
-sha256sums=('60bef201ab73c107c10bf7f556e28d66bc6f27e9b6455c6353777f806519e8e2')
+sha512sums=('ed5059b8d27c1fb2c83c2ad6fb1875a904a92fe10d3d44d91206840ad0f6955b8efecb1dddbc155040d8cd014dda3990f5c611ce3492819dba19419d924e9a3e')
 
 package () {
   install -Dm 0644 "30-touchpad.conf" "${pkgdir}/etc/X11/xorg.conf.d/30-touchpad.conf"

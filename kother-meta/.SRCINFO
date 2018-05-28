@@ -126,7 +126,7 @@ pkgbase = kother-meta
 	depends = zip
 	depends = zsh
 	source = powertop.service
-	sha256sums = 8ac93c58be13f91b5fba180b4dc528d3b36fc5e1c842b5b2e146bc135327db2d
+	sha512sums = 6780921bbe46ce1fa2c3a6774ef4da67cd8d944a8defdb722b5d62344c76572c53e95249a4a0243982e8aa6cece7623db8b5ef811fd795913939e5a1d92a1cb2
 
 pkgname = kother-meta
 

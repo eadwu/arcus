@@ -1,6 +1,5 @@
 # Based on react-native-cli and nodejs-jshint
-# USAGE:
-#   makepkg -csi
+# Maintainer: Edmund Wu <fangkazuto@gmail.com>
 
 pkgname=react-native-cli
 pkgver=2.0.1
@@ -16,15 +15,11 @@ url='https://facebook.github.io/react-native/'
 license=('BSD-3-Clause')
 depends=('nodejs')
 makedepends=('npm')
-source=(
-  "${pkgname}-$(pkgver).tgz::https://registry.npmjs.org/${pkgname}/-/${pkgname}-$(pkgver).tgz"
-  'https://raw.githubusercontent.com/facebook/react-native/master/LICENSE'
-)
+source=("${pkgname}-$(pkgver).tgz::https://registry.npmjs.org/${pkgname}/-/${pkgname}-$(pkgver).tgz"
+        'https://raw.githubusercontent.com/facebook/react-native/master/LICENSE')
 noextract=("${pkgname}-$(pkgver).tgz")
-sha512sums=(
-  'SKIP'
-  'b51daaa28d171b259f7ba3f58114606ae460eedf7ce044bdcba9231569c91d2e8bbb028b3b15e572b571493f0d76ec41ae93e777be164d515320d6800dfac66e'
-)
+sha512sums=('SKIP'
+            'b51daaa28d171b259f7ba3f58114606ae460eedf7ce044bdcba9231569c91d2e8bbb028b3b15e572b571493f0d76ec41ae93e777be164d515320d6800dfac66e')
 
 package () {
   cd ${srcdir}

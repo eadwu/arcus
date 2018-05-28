@@ -22,9 +22,9 @@ pkgbase = evelauncher
 	source = https://binaries.eveonline.com/evelauncher-1225328.tar.gz
 	source = evelauncher.desktop
 	source = EveOnline.png
-	sha256sums = SKIP
-	sha256sums = 35906fcc1041b3adff227d2f1fd8624599decc24012dbc8a9725a66ca2f3a767
-	sha256sums = a87784e5b5f11d2cb5b881c31d4309165a96bbce7ec1a8ca088e07748203e259
+	sha512sums = SKIP
+	sha512sums = 897ebee1605ebdc63467f9b5ec0dc0c1b46a4ff793d52fd4c4912dd164dd50fcb950aa251452d34c520ee4f3679bf343f6471703a2a796e0062ae0623f27215f
+	sha512sums = a56bfe5f64e8fe19214a1ba855316136969d04fb3f7d19bb04343ecb69f12df6ad2fe16d5014b28637afc51d24ad1f598d23023a061179013ccb6ce8e28bb5b3
 
 pkgname = evelauncher
 
