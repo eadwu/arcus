@@ -20,7 +20,7 @@
       - setfacl -d --set u::rwx,g::rwx,o::- / ${CI_PROJECT_DIR}
       - "echo 'nobody ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers"
     script:
-      - for d in *; do [ -f "${d}/PKGBUILD" ] && (cd $(readlink -f "${d}") && sudo -u nobody makepkg -cs --noconfirm); done
+      - for d in *; do [ -f "${d}/PKGBUILD" ] && (cd $(readlink -f "${d}") && sudo -u nobody PKGEXT='.pkg.tar' makepkg -cs --noconfirm); done
       - mkdir repo
       - mkdir repo/x86_64
       - find . -type f -not \( -path repo -prune \) -name "*.pkg.tar.xz" -exec mv "{}" repo/x86_64 \;
