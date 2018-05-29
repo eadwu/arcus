@@ -75,7 +75,6 @@ pkgbase = kother-meta
 	depends = python2-google-api-python-client
 	depends = python2-pip
 	depends = python2-pylint
-	depends = python-beautifulsoup4
 	depends = python-fonttools
 	depends = python-google-api-python-client
 	depends = python-matplotlib
