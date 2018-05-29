@@ -1,0 +1,17 @@
+# Maintainer: Edmund Wu <fangkazuto@gmail.com>
+
+pkgname=khinsider-git
+pkgver=0.1.0
+pkgrel=1
+pkgdesc="A script for khinsider mass downloads"
+arch=('x86_64')
+url="https://github.com/obskyr/khinsider"
+license=('unknown')
+depends=('python-beautifulsoup4'
+         'python-requests')
+source=("${pkgname}::git+https://github.com/obskyr/khinsider.git")
+sha512sums=('SKIP')
+
+package() {
+  install -Dm 0755 "${srcdir}/${pkgname}/khinsider.py" "${pkgdir}/usr/local/bin/khinsider"
+}

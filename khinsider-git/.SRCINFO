@@ -1,0 +1,14 @@
+pkgbase = khinsider-git
+	pkgdesc = A script for khinsider mass downloads
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/obskyr/khinsider
+	arch = x86_64
+	license = unknown
+	depends = python-beautifulsoup4
+	depends = python-requests
+	source = khinsider-git::git+https://github.com/obskyr/khinsider.git
+	sha512sums = SKIP
+
+pkgname = khinsider-git
+
