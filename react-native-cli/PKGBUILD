@@ -15,16 +15,9 @@ url='https://facebook.github.io/react-native/'
 license=('BSD-3-Clause')
 depends=('nodejs')
 makedepends=('npm')
-source=("${pkgname}-$(pkgver).tgz::https://registry.npmjs.org/${pkgname}/-/${pkgname}-$(pkgver).tgz"
-        'https://raw.githubusercontent.com/facebook/react-native/master/LICENSE')
-noextract=("${pkgname}-$(pkgver).tgz")
-sha512sums=('SKIP'
-            'b51daaa28d171b259f7ba3f58114606ae460eedf7ce044bdcba9231569c91d2e8bbb028b3b15e572b571493f0d76ec41ae93e777be164d515320d6800dfac66e')
+options=('!emptydirs')
 
 package () {
-  cd ${srcdir}
-  local _npmdir="${pkgdir}/usr/lib/node_modules/"
-  mkdir -p ${_npmdir}
-  cd ${_npmdir}
-  npm install -g --user root --prefix "${pkgdir}/usr" ${pkgname}@$(pkgver)
+  npm install -g --prefix "${pkgdir}/usr" --cache "${srcdir}/npm-cache" "${pkgname}@${pkgver}"
+  find "${pkgdir}/usr" -type d -exec chmod 755 {} +
 }
