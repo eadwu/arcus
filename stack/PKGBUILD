@@ -19,8 +19,7 @@ depends=('ncurses'
          'zlib'
          'gmp'
          'libffi'
-         'zlib'
-)
+         'zlib')
 source=('https://raw.githubusercontent.com/commercialhaskell/stack/master/LICENSE'
         "linux-${CARCH}.tar.gz::https://get.haskellstack.org/stable/linux-${CARCH}.tar.gz")
 sha512sums=('1984101b1bef33a743c7682bb8d0ba1a63a71d4e55e7c4233fd7975c61f81c416bdc11e3a88ec2561e78a9d51ea0fa5fdeacfec7a83dd226413f93775320b58c'
