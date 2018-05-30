@@ -14,6 +14,7 @@ pkgbase = kcore-meta
 	depends = networkmanager
 	depends = network-manager-applet
 	depends = ntp
+	depends = pacman-contrib
 	depends = pulseaudio
 	depends = pulseaudio-alsa
 	depends = pulseaudio-bluetooth
@@ -24,7 +25,6 @@ pkgbase = kcore-meta
 	depends = xorg-xprop
 	depends = xorg-xsetroot
 	depends = xorg-xwininfo
-	depends = yaourt
 	source = 30-touchpad.conf
 	sha512sums = ed5059b8d27c1fb2c83c2ad6fb1875a904a92fe10d3d44d91206840ad0f6955b8efecb1dddbc155040d8cd014dda3990f5c611ce3492819dba19419d924e9a3e
 
