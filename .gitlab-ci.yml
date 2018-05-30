@@ -10,7 +10,7 @@
     before_script:
       - pacman -Syy
       - pacman -Syu --noconfirm
-      - pacman -S base-devel --noconfirm
+      - pacman -S git base-devel --noconfirm
       - curl -sS "https://gitlab.com/arch-dual-boot/arch-x-os/raw/master/scripts/pacman.conf.patch" | patch -p1 /etc/pacman.conf
       - pacman -Syy
       - pacman -Syu --noconfirm
