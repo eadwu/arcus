@@ -9,6 +9,7 @@ url="https://github.com/obskyr/khinsider"
 license=('unknown')
 depends=('python-beautifulsoup4'
          'python-requests')
+makedepends=('git')
 source=("${pkgname}::git+https://github.com/obskyr/khinsider.git")
 sha512sums=('SKIP')
 

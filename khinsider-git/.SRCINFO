@@ -5,6 +5,7 @@ pkgbase = khinsider-git
 	url = https://github.com/obskyr/khinsider
 	arch = x86_64
 	license = unknown
+	makedepends = git
 	depends = python-beautifulsoup4
 	depends = python-requests
 	source = khinsider-git::git+https://github.com/obskyr/khinsider.git
