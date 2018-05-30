@@ -14,6 +14,7 @@
       - curl -sS "https://gitlab.com/arch-dual-boot/arch-x-os/raw/master/scripts/pacman.conf.patch" | patch -p1 /etc/pacman.conf
       - pacman -Syy
       - pacman -Syu --noconfirm
+      - chown nobody:$(id -gn nobody) /
       - "echo 'nobody ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers"
     script:
       - mkdir repo
