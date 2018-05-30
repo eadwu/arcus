@@ -17,9 +17,8 @@
       - chown nobody:$(id -gn nobody) /
       - "echo 'nobody ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers"
     script:
-      - mkdir repo
-      - mkdir repo/x86_64
       - for d in *; do [ -f "${d}/PKGBUILD" ] && (cd $(readlink -f "${d}") && sudo -u nobody BUILDDIR=/tmp/makepkg PKGDEST=repo/x86_64 SRCDEST=/tmp/src SRCPKGDEST=/tmp/srcpackages LOGDEST=/tmp/makepkglogs makepkg -cs --noconfirm); done
+      - cp -r /tmp/repo ${CI_PROJECT_DIR}
       - repo-add repo/x86_64/arcus.db.tar.gz repo/x86_64/*.pkg.tar.xz
 
   pages:
