@@ -18,8 +18,7 @@
       - "echo 'nobody ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers"
     script:
       - for d in *; do [ -f "${d}/PKGBUILD" ] && (cd $(readlink -f "${d}") && sudo -u nobody BUILDDIR=/tmp/makepkg PKGDEST=/tmp/repo/x86_64 SRCDEST="/tmp/src/${d}" SRCPKGDEST=/tmp/srcpackages LOGDEST=/tmp/makepkglogs makepkg -csi --noconfirm); done
-      - mv /tmp/repo ${CI_PROJECT_DIR}
-      - repo-add repo/x86_64/arcus.db.tar.gz repo/x86_64/*.pkg.tar.xz
+      - mv /tmp/repo "${CI_PROJECT_DIR}"
 
   pages:
     stage: deploy
@@ -30,10 +29,17 @@
     artifacts:
       paths:
         - public
+    before_script:
+      - mkdir "${CI_PROJECT_DIR}/.public"
+      - curl -sSL "https://gitlab.com/eadwu/arcus/-/jobs/artifacts/master/download?job=build-repo" -o build-repo.zip
+      - bsdtar xvC "${CI_PROJECT_DIR}/.public" -f build-repo.zip
+      - rm -f build-repo.zip
     script:
-      - mkdir .public
-      - cp -r repo .public
-      - mv .public public
+      - cp -nr "${CI_PROJECT_DIR}/repo" "${CI_PROJECT_DIR}/.public"
+      - paccache -rc "${CI_PROJECT_DIR}/.public/repo/x86_64"
+      - repo-add -R "${CI_PROJECT_DIR}/.public/repo/x86_64/arcus.db.tar.gz" "${CI_PROJECT_DIR}/.public/repo/x86_64"/*.pkg.tar.xz
+    after_script:
+      - mv "${CI_PROJECT_DIR}/.public" "${CI_PROJECT_DIR}/public"
 
   stages:
     - build
