@@ -30,6 +30,9 @@
       paths:
         - public
     before_script:
+      - pacman -Syy
+      - pacman -Syu --noconfirm
+      - pacman -S pacman-contrib --noconfirm
       - mkdir "${CI_PROJECT_DIR}/.public"
       - curl -sSL "https://gitlab.com/eadwu/arcus/-/jobs/artifacts/master/download?job=build-repo" -o build-repo.zip
       - bsdtar xvC "${CI_PROJECT_DIR}/.public" -f build-repo.zip
