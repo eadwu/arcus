@@ -1,6 +1,5 @@
 # Based on bfg
 # Maintainer: Edmund Wu <fangkazuto@gmail.com>
-
 pkgname=bfg
 pkgver=1.13.0
 

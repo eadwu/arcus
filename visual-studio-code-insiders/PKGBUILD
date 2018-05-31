@@ -1,6 +1,5 @@
 # Based on visual-studio-code-insiders
 # Maintainer: Edmund Wu <fangkazuto@gmail.com>
-
 pkgname=visual-studio-code-insiders
 pkgver=1.24.0.1527484372
 pkgrel=1

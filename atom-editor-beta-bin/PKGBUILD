@@ -1,6 +1,5 @@
 # Based on atom-editor-beta-bin
 # Maintainer: Edmund Wu <fangkazuto@gmail.com>
-
 pkgname=atom-editor-beta-bin
 pkgver=1.28.0.beta1
 

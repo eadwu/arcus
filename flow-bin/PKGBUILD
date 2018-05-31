@@ -1,6 +1,5 @@
 # Based on flow-bin
 # Maintainer: Edmund Wu <fangkazuto@gmail.com>
-
 pkgname=flow-bin
 pkgver=0.73.0
 
