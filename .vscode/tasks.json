@@ -9,14 +9,6 @@
       "command": "git ls-files --ignored --others --exclude-standard | xargs -d '\\n' rm -f"
     },
     {
-      "label": "pkgbuilds: generate",
-      "type": "shell",
-      "command": "makepkg --printsrcinfo > .SRCINFO",
-      "options": {
-        "cwd": "${fileDirname}"
-      }
-    },
-    {
       "label": "pkgbuilds: test",
       "type": "shell",
       "command": "namcap '${file}'"

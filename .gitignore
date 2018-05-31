@@ -3,4 +3,3 @@
 !.gitignore
 !.vscode/*
 !**/PKGBUILD
-!**/.SRCINFO
