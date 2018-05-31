@@ -1,0 +1,30 @@
+# Based on package-query
+# Maintainer: Edmund Wu <fangkazuto@gmail.com>
+pkgname=package-query
+pkgver=1.9
+
+pkgver () {
+  printf "%s" $(curl -Ss "http://mir.archlinux.fr/releases/package-query/" | grep -Po "(?<=package-query-)[0-9\.]+(?=.tar.gz)" | sort -k1.8 | tail -1)
+}
+
+pkgrel=1
+pkgdesc="Query ALPM and AUR"
+arch=('x86_64')
+url="https://github.com/archlinuxfr/${pkgname}/"
+license=('GPL')
+depends=('pacman>=5.0'
+         'yajl>=2.0')
+source=("https://mir.archlinux.fr/releases/${pkgname}/${pkgname}-$(pkgver).tar.gz")
+sha512sums=('SKIP')
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  ./configure --localstatedir=/var --prefix=/usr --sysconfdir=/etc --with-aur-url=https://aur.archlinux.org
+  make
+}
+
+package ()
+{
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make DESTDIR="${pkgdir}" install
+}

@@ -1,0 +1,35 @@
+# Based on yaourt
+# Maintainer: Edmund Wu <fangkazuto@gmail.com>
+
+pkgname=yaourt
+pkgver=1.9
+
+pkgver () {
+  printf "%s" $(curl -Ss "http://mir.archlinux.fr/releases/yaourt/" | grep -Po "(?<=yaourt-)[0-9\.]+(?=.tar.gz)" | sort -k1.8 | tail -1)
+}
+
+pkgrel=1
+pkgdesc="A pacman wrapper with extended features and AUR support"
+arch=('x86_64')
+url="https://github.com/archlinuxfr/${pkgname}"
+license=('GPL')
+depends=('diffutils'
+         'gettext'
+         'pacman>=5.0'
+         'package-query>=1.8')
+optdepends=('aurvote: vote for favorite packages from AUR'
+            'customizepkg: automatically modify PKGBUILD during install/upgrade'
+            'rsync: retrieve PKGBUILD from official repositories')
+backup=('etc/yaourtrc')
+source=("${url}/releases/download/${pkgver}/${pkgname}-$(pkgver).tar.gz")
+sha512sums=('SKIP')
+
+build () {
+  cd "${srcdir}/${pkgname}-${pkgver}/"
+  make PREFIX=/usr sysconfdir=/etc localstatedir=/var
+}
+
+package () {
+  cd "${srcdir}/${pkgname}-${pkgver}/"
+  make PREFIX=/usr sysconfdir=/etc localstatedir=/var DESTDIR="${pkgdir}" install
+}
