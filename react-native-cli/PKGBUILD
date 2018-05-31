@@ -1,6 +1,5 @@
-# Based on react-native-cli and nodejs-jshint
+# Based on react-native-cli
 # Maintainer: Edmund Wu <fangkazuto@gmail.com>
-
 pkgname=react-native-cli
 pkgver=2.0.1
 
@@ -10,7 +9,7 @@ pkgver () {
 
 pkgrel=1
 pkgdesc='React Native CLI tools'
-arch=('any')
+arch=('x86_64')
 url='https://facebook.github.io/react-native/'
 license=('BSD-3-Clause')
 depends=('nodejs')

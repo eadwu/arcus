@@ -10,7 +10,7 @@ pkgver () {
 
 pkgrel=1
 pkgdesc='Unofficial Eve Online Launcher'
-arch=('any')
+arch=('x86_64')
 url='https://forums.eveonline.com/t/eve-launcher-for-linux/7286'
 license=('custom')
 depends=('alsa-lib'
