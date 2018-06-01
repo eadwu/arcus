@@ -1,6 +1,9 @@
 ---
   image: base/archlinux:latest
 
+  variables:
+    TMPDIR: /tmp
+
   build-repo:
     stage: build
     artifacts:
@@ -17,8 +20,8 @@
       - chown nobody:$(id -gn nobody) /
       - "echo 'nobody ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers"
     script:
-      - for d in *; do [ -f "${d}/PKGBUILD" ] && (cd $(readlink -f "${d}") && sudo -u nobody BUILDDIR=/tmp/makepkg PKGDEST=/tmp/repo/x86_64 SRCDEST="/tmp/src/${d}" SRCPKGDEST=/tmp/srcpackages LOGDEST=/tmp/makepkglogs makepkg -csi --noconfirm); done
-      - mv /tmp/repo "${CI_PROJECT_DIR}"
+      - for d in *; do [ -f "${d}/PKGBUILD" ] && (cd $(readlink -f "${d}") && sudo -u nobody BUILDDIR="${TMPDIR}/makepkg" PKGDEST="${TMPDIR}/repo/x86_64" SRCDEST="${TMPDIR}/src/${d}" SRCPKGDEST="${TMPDIR}/srcpackages" LOGDEST="${TMPDIR}/makepkglogs" makepkg -csi --noconfirm); done
+      - mv "${TMPDIR}/repo" "${CI_PROJECT_DIR}"
 
   pages:
     stage: deploy
