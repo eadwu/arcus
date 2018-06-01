@@ -1,7 +1,7 @@
 # Maintainer: Edmund Wu <fangkazuto@gmail.com>
 pkgname=kenv-meta
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.1.1
+pkgrel=1
 pkgdesc='Graphical environment'
 arch=('x86_64')
 url='https://gitlab.com/eadwu/pkgbuilds'
@@ -13,6 +13,7 @@ depends=('bspwm'
          'lightdm-gtk-greeter'
          'nitrogen'
          'pass'
+         'polybar-git'
          'pwgen'
          'qt5-base'
          'rxvt-unicode'
