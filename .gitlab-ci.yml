@@ -36,16 +36,13 @@
       - pacman -Syy
       - pacman -Syu --noconfirm
       - pacman -S pacman-contrib --noconfirm
-      - mkdir "${CI_PROJECT_DIR}/.public"
-      - curl -sSL "${CI_PROJECT_URL}/-/jobs/artifacts/master/download?job=build-repo" -o "${CI_PROJECT_DIR}/build-repo.zip"
-      - bsdtar xvf "${CI_PROJECT_DIR}/build-repo.zip" -C "${CI_PROJECT_DIR}/.public" "*.pkg.tar.xz"
-      - rm -f "${CI_PROJECT_DIR}/build-repo.zip"
+      - curl -sSL "${CI_PROJECT_URL}/-/jobs/artifacts/master/download?job=pages" -o "${CI_PROJECT_DIR}/pages.zip"
+      - bsdtar xvf "${CI_PROJECT_DIR}/pages.zip" -C "${CI_PROJECT_DIR}" "*.pkg.tar.xz"
+      - rm -f "${CI_PROJECT_DIR}/pages.zip"
     script:
-      - cp -nr "${CI_PROJECT_DIR}/repo" "${CI_PROJECT_DIR}/.public"
-      - paccache -rvc "${CI_PROJECT_DIR}/.public/repo/x86_64"
-      - repo-add "${CI_PROJECT_DIR}/.public/repo/x86_64/arcus.db.tar.gz" "${CI_PROJECT_DIR}/.public/repo/x86_64"/*.pkg.tar.xz
-    after_script:
-      - mv "${CI_PROJECT_DIR}/.public" "${CI_PROJECT_DIR}/public"
+      - cp -nr "${CI_PROJECT_DIR}/repo" "${CI_PROJECT_DIR}/public"
+      - paccache -rvc "${CI_PROJECT_DIR}/public/repo/x86_64"
+      - repo-add "${CI_PROJECT_DIR}/public/repo/x86_64/arcus.db.tar.gz" "${CI_PROJECT_DIR}/public/repo/x86_64"/*.pkg.tar.xz
 
   stages:
     - build
