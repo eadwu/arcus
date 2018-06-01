@@ -1,0 +1,55 @@
+# Based on polybar-git
+# Maintainer: Edmund Wu <fangkazuto@gmail.com>
+_pkgname=polybar
+pkgname="${_pkgname}-git"
+pkgver=3.1.0.r137.g2e198ec
+
+pkgver() {
+  git -C "${_pkgname}" describe --long --tags | sed 's/-/.r/;s/-/./g'
+}
+
+pkgrel=1
+pkgdesc='A fast and easy-to-use status bar'
+arch=('x86_64')
+url='https://github.com/jaagr/polybar'
+license=('MIT')
+depends=('cairo'
+         'xcb-util-image'
+         'xcb-util-wm'
+         'xcb-util-xrm'
+         'xcb-util-cursor')
+makedepends=('cmake'
+             'git'
+             'python'
+             'python2'
+             'pkg-config')
+optdepends=('alsa-lib: alsa module support'
+            'pulseaudio: pulseaudio module support'
+            'libmpdclient: mpd module support'
+            'wireless_tools: network module support'
+            'jsoncpp: i3 module support'
+            'i3-wm: i3 module support'
+            'ttf-unifont: Font used in example config'
+            'siji-git: Font used in example config'
+            'curl: github module support')
+provides=('polybar')
+conflicts=('polybar')
+install="${_pkgname}.install"
+source=("${_pkgname}::git+${url}.git")
+sha512sums=('SKIP')
+
+prepare () {
+  git -C "${_pkgname}" submodule update --init --recursive
+  mkdir -p "${_pkgname}/build"
+}
+
+build () {
+  cd "${_pkgname}/build" || exit 1
+  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+  cmake --build .
+}
+
+package () {
+  cmake --build "${_pkgname}/build" --target install -- DESTDIR="${pkgdir}"
+  install -Dm644 "${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+}
