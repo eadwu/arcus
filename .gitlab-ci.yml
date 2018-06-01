@@ -37,9 +37,9 @@
       - pacman -Syu --noconfirm
       - pacman -S pacman-contrib --noconfirm
       - mkdir "${CI_PROJECT_DIR}/.public"
-      - curl -sSL "${CI_PROJECT_URL}/-/jobs/artifacts/master/download?job=build-repo" -o build-repo.zip
-      - bsdtar xvf build-repo.zip -C "${CI_PROJECT_DIR}/.public" "*.pkg.tar.xz"
-      - rm -f build-repo.zip
+      - curl -sSL "${CI_PROJECT_URL}/-/jobs/artifacts/master/download?job=build-repo" -o "${CI_PROJECT_DIR}/build-repo.zip"
+      - bsdtar xvf "${CI_PROJECT_DIR}/build-repo.zip" -C "${CI_PROJECT_DIR}/.public" "*.pkg.tar.xz"
+      - rm -f "${CI_PROJECT_DIR}/build-repo.zip"
     script:
       - cp -nr "${CI_PROJECT_DIR}/repo" "${CI_PROJECT_DIR}/.public"
       - paccache -rvc "${CI_PROJECT_DIR}/.public/repo/x86_64"
