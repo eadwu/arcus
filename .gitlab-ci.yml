@@ -37,12 +37,12 @@
       - pacman -Syu --noconfirm
       - pacman -S pacman-contrib --noconfirm
       - mkdir "${CI_PROJECT_DIR}/.public"
-      - curl -sSL "https://gitlab.com/eadwu/arcus/-/jobs/artifacts/master/download?job=build-repo" -o build-repo.zip
-      - bsdtar xvC "${CI_PROJECT_DIR}/.public" -f build-repo.zip
+      - curl -sSL "${CI_PROJECT_URL}/-/jobs/artifacts/master/download?job=build-repo" -o build-repo.zip
+      - bsdtar xvf build-repo.zip -C "${CI_PROJECT_DIR}/.public" "*.pkg.tar.xz"
       - rm -f build-repo.zip
     script:
       - cp -nr "${CI_PROJECT_DIR}/repo" "${CI_PROJECT_DIR}/.public"
-      - paccache -rc "${CI_PROJECT_DIR}/.public/repo/x86_64"
+      - paccache -rvc "${CI_PROJECT_DIR}/.public/repo/x86_64"
       - repo-add -R "${CI_PROJECT_DIR}/.public/repo/x86_64/arcus.db.tar.gz" "${CI_PROJECT_DIR}/.public/repo/x86_64"/*.pkg.tar.xz
     after_script:
       - mv "${CI_PROJECT_DIR}/.public" "${CI_PROJECT_DIR}/public"
