@@ -1,6 +1,6 @@
 # Maintainer: Edmund Wu <fangkazuto@gmail.com>
 pkgname=kother-meta
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc='Other packages'
 arch=('x86_64')
@@ -27,6 +27,7 @@ depends=('adapta-gtk-theme'
          'dotnet-host'
          'dotnet-runtime'
          'dotnet-sdk'
+         'evelauncher'
          'fcron'
          'feh'
          'flow-bin'
